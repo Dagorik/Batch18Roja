@@ -10,6 +10,7 @@ var jetta = {
 		return "ARRANCANDO"
 	}
 }
+
 function Auto(marca,modelo,annio){
 	this.marca = marca
 	this.modelo = modelo
