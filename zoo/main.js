@@ -6,9 +6,9 @@ console.log(pug)
 
 var list = [pug...]
 
-function devulveTerrestres(liistAnimlaes){
+function jaulasTerrestres(liistAnimlaes){
 	var listTerrestres = []
-	for (var i= 0; i < liistAnimlaes.l;i++){
+	for (var i = 0; i < liistAnimlaes.l;i++){
 		var animal = liistAnimlaes[i]
 		if (animal.raza == 'Terrestre'){
 			listTerrestres.push(animal)
@@ -17,3 +17,6 @@ function devulveTerrestres(liistAnimlaes){
 
 	return listTerrestres
 }
+
+
+jaulasTerrestres(list)
