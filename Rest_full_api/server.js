@@ -15,10 +15,17 @@ app.get('/api/:uuid',(req,res) =>{
 	res.send({uuid})
 })
 
+app.get('/v1/api/getStudent/:name/',(req,res) =>{
+	const {name} = req.params
+	MongoClient.findStudent(name).then(function(student){
+		res.send(student)	
+	})	
+})
+
+
 app.post('/v1/api/post',(req,res) => {
 	const data = typeof req.body == 'string' ?
 	 JSON.parse(req.body) : req.body;
-	 
 	res.status(201).json({La_suma_total_es:'suma'})
 })
 
