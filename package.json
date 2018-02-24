@@ -4,6 +4,7 @@
   "description": "",
   "main": "callback.js",
   "dependencies": {
+    "google-maps-react": "^1.1.2",
     "request": "^2.83.0"
   },
   "devDependencies": {},
