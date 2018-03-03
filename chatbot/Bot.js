@@ -1,6 +1,6 @@
 var rp = require('request-promise')
 var request = require('request')
-var facebook_service = require('./config/config.js')
+var facebook_service = require('./config')
 
 class Bot {
   constructor(TOKEN) {

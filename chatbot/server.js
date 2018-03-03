@@ -2,7 +2,34 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express();
 const facebook_service = require('./config')
-
+const Bot = require('./Bot')
+const generic =  [
+            {'title': 'La construcción',
+            'image_url':'https://urbania.pe/blog/wp-content/uploads/2015/02/edificio-lum1.jpg',
+            'subtitle':'Este es el subtitulo :D',
+            'buttons':[
+             {'type':'postback',
+               'title':'Cotizar',
+               'payload':'COTIZAR_CONSTRUCCION_POSTBACK'}
+           ]},
+           {'title': 'Los contenidos',
+           'image_url':'http://s3.amazonaws.com/digitaltrends-uploads-prod/2013/08/home-theater-under-3000-k.jpg',
+           'subtitle':' ',
+           'buttons':[
+            {'type':'postback',
+              'title':'Cotizar',
+              'payload':'COTIZAR_CONTENIDOS_POSTBACK'}
+          ]},
+          {'title': 'Construcción y contenidos',
+          'image_url':'https://www.deinmuebles.com.mx/wp-content/uploads/2016/11/Diseno-de-sala-y-cocina-de-mini-departamento.jpg',
+          'subtitle':' ',
+          'buttons':[
+           {"type":"web_url",
+              "title":"Latest News",
+              "url":"https://www.messenger.com/",
+              "webview_height_ratio":"full"}
+         ]}
+        ]
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
@@ -30,6 +57,10 @@ app.post('/webhook',(req,res)=>{
 	req.body.entry.forEach(function(messagingEvent){
 		messagingEvent.messaging.forEach(function(message){
 			console.log(message)
+			const repliceBot = new Bot(facebook_service.accessToken)
+			repliceBot.sendTextMessage(message.sender.id,"Holaaaaa!!!! :D")
+			repliceBot.sendGenericTemplate(message.sender.id,generic)
+
 		})
 	})
 	res.sendStatus(200)
