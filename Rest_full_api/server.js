@@ -18,6 +18,7 @@ app.get('/api/:uuid',(req,res) =>{
 app.get('/v1/api/getStudent/:name/',(req,res) =>{
 	const {name} = req.params
 	MongoClient.findStudent(name).then(function(student){
+		
 		res.send(student)	
 	})	
 })
@@ -36,8 +37,6 @@ app.post('/create/student/',(req,res) => {
 	})
 
 })
-
-
 
 
 app.listen(3000, () => console.log(`Listening on port 3000`));
